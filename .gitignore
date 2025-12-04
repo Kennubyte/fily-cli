@@ -1,0 +1,21 @@
+# Binaries
+fily
+fily-cli
+*.exe
+
+# Build output
+dist/
+
+# Go
+*.test
+*.out
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
