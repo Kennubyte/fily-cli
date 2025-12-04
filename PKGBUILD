@@ -8,11 +8,11 @@ url="https://github.com/Kennubyte/fily-cli"
 license=('MIT')
 depends=('glibc')
 makedepends=('go' 'git')
-source=("git+https://github.com/Kennubyte/fily-cli.git#tag=v${pkgver}")
-sha256sums=('SKIP')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/Kennubyte/fily-cli/archive/v$pkgver.tar.gz")
+sha256sums=('6bdf5d86fb2d0aaa9eb32e3049a9d6278d7cb7a9935f8413289368b1bff3e064')
 
 build() {
-    cd "$srcdir/fily-cli"
+    cd "$srcdir/$pkgname-cli-$pkgver"
     export CGO_CPPFLAGS="${CPPFLAGS}"
     export CGO_CFLAGS="${CFLAGS}"
     export CGO_CXXFLAGS="${CXXFLAGS}"
@@ -22,6 +22,7 @@ build() {
 }
 
 package() {
-    cd "$srcdir/fily-cli"
+    cd "$srcdir/$pkgname-cli-$pkgver"
     install -Dm755 "$pkgname" "$pkgdir/usr/bin/$pkgname"
+    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
